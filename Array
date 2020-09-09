@@ -1,0 +1,22 @@
+
+#include <stdio.h>
+
+int main()
+{
+    int deforown;
+    int def[5] = {45,7,98,23,5};
+    printf("please select from the list :\n");
+    printf("    1. Use the default Array enter - 1.  \n    2. Make your own array enter - 2.\n");
+    scanf("%d", &deforown);
+    if (deforown == 1)
+    {
+        int i;
+        printf("This is default array :\n");
+        int len = sizeof(def)/sizeof(def[0]);
+        for(i=0;i<len;i++)
+        {
+        printf("%d ",def[i]);
+        }
+    }
+    return 0;
+}
