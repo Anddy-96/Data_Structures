@@ -1,5 +1,3 @@
-
-
 #include <stdio.h>
 
 
@@ -18,11 +16,28 @@ void main()
         int len = sizeof(def)/sizeof(def[0]);
         for(i=0;i<len;i++)
         {
-        printf("%d ",def[i]);
+            printf("%d ",def[i]);
         }
-        
+        choose(def);
     }
-    choose(def);
+    if (deforown == 2)
+    {
+        int a;
+        int i,k;
+        printf("enter the size of array :\n");
+        scanf("%d",&a);
+        int arr[a];
+        printf("start entering the value :\n");
+        for(i=0;i<a;i++)
+        {
+            scanf("%d",&arr[i]);
+        }
+        printf("your Array is :\n");
+        for(k=0;k<a;k++)
+        {
+            printf("%d ",arr[k]);
+        }
+    }
    
 }
 void choose(int arr)
