@@ -1,12 +1,15 @@
 
+
 #include <stdio.h>
 
-int main()
+
+void choose(int arr);
+void main()
 {
     int deforown;
     int def[5] = {45,7,98,23,5};
     printf("please select from the list :\n");
-    printf("    1. Use the default Array enter - 1.  \n    2. Make your own array enter - 2.\n");
+    printf("    1. Use the default Array, enter - 1.  \n    2. Make your own Array, enter - 2.\n");
     scanf("%d", &deforown);
     if (deforown == 1)
     {
@@ -17,6 +20,14 @@ int main()
         {
         printf("%d ",def[i]);
         }
+        
     }
-    return 0;
+    choose(def);
+   
 }
+void choose(int arr)
+{
+    printf("\nSelect the operation you want to do :\n");
+    printf("    1. Add \n    2. Delete the specific index \n    3. Delete the specific value \n    4. Add at specific index \n    5. Delete whole Array \n    6. Display Array\n");
+}
+
