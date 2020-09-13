@@ -1,11 +1,13 @@
+
 #include <stdio.h>
 
 
-void choose(int arr);
+void choose(int arr[] , int size);
+void Display(int arr[] , int size);
 void main()
 {
     int deforown;
-    int def[5] = {45,7,98,23,5};
+    int def[10] = {45,7,98,23,5,41,20,6,98,12};
     printf("please select from the list :\n");
     printf("    1. Use the default Array, enter - 1.  \n    2. Make your own Array, enter - 2.\n");
     scanf("%d", &deforown);
@@ -18,7 +20,9 @@ void main()
         {
             printf("%d ",def[i]);
         }
-        choose(def);
+        printf("\n");
+        printf("%d\n",len);
+        choose(def,len);
     }
     if (deforown == 2)
     {
@@ -37,12 +41,40 @@ void main()
         {
             printf("%d ",arr[k]);
         }
+        choose(arr,a);
     }
-   
+
 }
-void choose(int arr)
+void choose(int arr[] , int size)
 {
+    int cl;
     printf("\nSelect the operation you want to do :\n");
     printf("    1. Add \n    2. Delete the specific index \n    3. Delete the specific value \n    4. Add at specific index \n    5. Delete whole Array \n    6. Display Array\n");
+    scanf("%d",&cl);
+    if(cl == 6)
+    {
+        Display(arr,size);
+    }
+}
+void Display(int arr[] , int size)
+{
+    int i;
+    char a;
+    for(i=0;i<size;i++)
+    {
+        printf("%d ",arr[i]);
+    }
+    printf("\n");
+    printf("you want to continue y/n :\n");
+    scanf("%s",&a);
+    if (a == 'y')
+    {
+        choose(arr,size);
+    }
+    else
+    {
+        printf("Thank you!\n");
+    }
+
 }
 
