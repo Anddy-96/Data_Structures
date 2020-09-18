@@ -156,9 +156,24 @@ void DelSI(int arr[], int size)
         }
         else
         {
-            
+            for(i=0;i<b-1;i++)
+            {
+                c[i] = arr[i];
+            }
+            for(i=b;i<l+1;i++)
+            {
+                c[i-1] = arr[i];
+            }
         }
+
     }
+    else
+    {
+        printf("you have entered index out of range\n");
+        DelSI(arr,size);
+    }
+    printf("value is deleted\n");
+    Display(c,l);
 }
 void DelSV(int arr[], int size)
 {
