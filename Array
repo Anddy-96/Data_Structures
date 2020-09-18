@@ -4,10 +4,16 @@
 
 void choose(int arr[] , int size);
 void Display(int arr[] , int size);
+void Add(int arr[] , int size);
+void DelSI(int arr[] , int size);
+void DelSV(int arr[] , int size);
+void AddSI(int arr[] , int size);
+void DelWA(int arr[] , int size);
+void Exit();
 void main()
 {
     int deforown;
-    int def[10] = {45,7,98,23,5,41,20,6,98,12};
+    int def[5] = {45,7,98,23,5};
     printf("please select from the list :\n");
     printf("    1. Use the default Array, enter - 1.  \n    2. Make your own Array, enter - 2.\n");
     scanf("%d", &deforown);
@@ -21,7 +27,6 @@ void main()
             printf("%d ",def[i]);
         }
         printf("\n");
-        printf("%d\n",len);
         choose(def,len);
     }
     if (deforown == 2)
@@ -49,11 +54,45 @@ void choose(int arr[] , int size)
 {
     int cl;
     printf("\nSelect the operation you want to do :\n");
-    printf("    1. Add \n    2. Delete the specific index \n    3. Delete the specific value \n    4. Add at specific index \n    5. Delete whole Array \n    6. Display Array\n");
+    printf("    1. Add \n    2. Delete the specific index \n    3. Delete the specific value \n    4. Add at specific index \n    5. Delete whole Array \n    6. Display Array\n    7. Exit\n");
     scanf("%d",&cl);
-    if(cl == 6)
+    switch(cl)
     {
-        Display(arr,size);
+        case 1:
+            Add(arr,size);
+            break;
+        case 2:
+            DelSI(arr,size);
+            break;
+        case 3:
+            DelSV(arr,size);
+            break;
+        case 4:
+            AddSI(arr,size);
+            break;
+        case 5:
+            DelWA(arr,size);
+            break;
+        case 6:
+            Display(arr,size);
+            break;
+        case 7:
+            Exit();
+            break;
+        default:
+            printf("selection is not from given list\n");
+            char a;
+            printf("you want to continue y/n :\n");
+            scanf("%s",&a);
+            if (a == 'y')
+            {
+                choose(arr,size);
+            }
+            else
+            {
+                printf("Thank you!\n");
+            }
+
     }
 }
 void Display(int arr[] , int size)
@@ -77,4 +116,38 @@ void Display(int arr[] , int size)
     }
 
 }
-
+void Add(int arr[], int size)
+{
+    int a,i;
+    int l = size + 1;
+    int b[l];
+    printf("Enter the value which you want to add :\n");
+    scanf("%d",&a);
+    for(i=0;i<size;i++)
+    {
+        b[i]=arr[i];
+    }
+    b[l-1]=a;
+    printf("your value is added\n");
+    Display(b,l);
+}
+void DelSI(int arr[], int size)
+{
+    printf("this is under construction\n");
+}
+void DelSV(int arr[], int size)
+{
+    printf("this is under construction\n");
+}
+void AddSI(int arr[], int size)
+{
+    printf("this is under construction\n");
+}
+void DelWA(int arr[], int size)
+{
+    printf("this is under construction\n");
+}
+void Exit()
+{
+    printf("this is under construction\n");
+}
