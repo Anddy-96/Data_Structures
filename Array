@@ -133,14 +133,31 @@ void Add(int arr[], int size)
 }
 void DelSI(int arr[], int size)
 {
-    int a,b;
-    int l = size -1;
+    int a,b,i;
+    int l = size - 1;
     int c[l];
     printf("Enter which index you want to delete:\n");
     scanf("%d",&b);
     if(b<=size)
     {
-        
+        if(b==1)
+        {
+            for(i=0;i<l;i++)
+            {
+                c[i] = arr[i+1];
+            }
+        }
+        if(b==size)
+        {
+            for(i=0;i<l;i++)
+            {
+                c[i] = arr[i];
+            }
+        }
+        else
+        {
+            
+        }
     }
 }
 void DelSV(int arr[], int size)
