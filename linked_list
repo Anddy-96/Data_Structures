@@ -21,11 +21,11 @@
  }
 int main(void) {
   int r;
-  printf("Select:\n\t1.Use Default Link List\n\t2.Make your own Link List");
+  printf("Select:\n\t1.Use Default Link List\n\t2.Make your own Link List\n");
   scanf("%d",&r);
   if(r == 1)
   {
-    
+
   }
   else
   {
