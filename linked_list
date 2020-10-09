@@ -5,7 +5,6 @@
   int x;
   struct node *y;
  };
-
  void printList(struct node *n)
  {
    while(n != NULL)
@@ -21,37 +20,46 @@
    printList(n);
  }
 int main(void) {
-
-printf("Enter the number of nodes you want in linklist:\n");
-int i,b;
-scanf("%d",&b);
-
-
-struct node *n, *t, *h;
-int z;
-n = (struct node *)malloc(b * sizeof(struct node));
-h = (struct node*)malloc(sizeof(struct node));
-for(i=0;i<b;i++)
-{
-  printf("Enter node %d value:\n",i+1);
-  scanf(" %d", &z);
-  (n+i)->x = z;
-  if(i>0)
+  int r;
+  printf("Select:\n\t1.Use Default Link List\n\t2.Make your own Link List");
+  scanf("%d",&r);
+  if(r == 1)
   {
-    (n+i-1)->y = (n+i); 
+    
   }
-}
-(n+b-1)->y = NULL;
-h->x = n->x;
-if(b == 1)
-{
-  h->y = NULL;
-}
-else
-{
-  h->y = n+1;
-}
-printf("Displying all node values:\n");
-Choose(h);
-return 0;
+  else
+  {
+    printf("Enter the number of nodes you want in linklist:\n");
+  int i,b;
+  scanf("%d",&b);
+  struct node *n, *t, *h;
+  int z;
+  n = (struct node *)malloc(b * sizeof(struct node));
+  h = (struct node*)malloc(sizeof(struct node));
+  for(i=0;i<b;i++)
+  {
+    printf("Enter node %d value:\n",i+1);
+    scanf(" %d", &z);
+    (n+i)->x = z;
+    if(i>0)
+    {
+      (n+i-1)->y = (n+i); 
+    }
+  }
+  (n+b-1)->y = NULL;
+  h->x = n->x;
+  if(b == 1)
+  {
+    h->y = NULL;
+  }
+  else
+  {
+    h->y = n+1;
+  }
+  printf("Displying all node values:\n");
+  Choose(h);
+  }
+
+  
+  return 0;
 }
