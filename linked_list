@@ -17,7 +17,7 @@
   void Choose(struct node *n)
  {
    printf("Select the operations:\n");
-   printf("\t1.Add Elemet.\n\t2.Add at Beginning.\n");
+   printf("\t1.Add Elemet.\n\t2.Add at Beginning.\n\t3.Remove first.\n\t5.Remove last.\n\t6.Remove at particular index\n\t7.Remove value.\n\t8.Get Index of particular value\n");
    printList(n);
  }
 int main(void) {
