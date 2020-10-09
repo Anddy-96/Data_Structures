@@ -1,1 +1,44 @@
-Under construction
+#include <stdio.h>
+#include <stdlib.h>
+ struct node
+ {
+  int x;
+  struct node *y;
+ };
+ void printList(struct node *n)
+ {
+   while(n != NULL)
+   {
+     printf("%d\n",n->x);
+     n = n->y;
+   }
+ }
+int main(void) {
+
+printf("Enter the number of nodes you want in linklist:\n");
+int i,b;
+scanf("%d",&b);
+
+
+struct node *n, *t, *h;
+int z;
+n = (struct node *)malloc(b * sizeof(struct node));
+h = (struct node*)malloc(sizeof(struct node));
+for(i=0;i<b;i++)
+{
+  printf("Enter node %d value:\n",i+1);
+  scanf(" %d", &z);
+  (n+i)->x = z;
+  if(i>0)
+  {
+    (n+i-1)->y = (n+i); 
+  }
+  
+}
+(n+b-1)->y = NULL;
+h->x = n->x;
+h->y = n+1;
+printf("Displying all node values:\n");
+printList(h);
+return 0;
+}
