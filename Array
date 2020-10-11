@@ -12,6 +12,7 @@
 
  void printList(struct node *a)
  {
+   printf("Your list:\n");
    while(a != NULL)
    {
      printf("%d\n",a->x);
@@ -60,6 +61,10 @@
       printList(h);
       break;
     case 2:
+      printf("Enter the element you want to add:\n");
+      scanf("%d",&b);
+      Addatfirst(b,&h);
+      printList(h);
       break;
     case 3:
       break;
