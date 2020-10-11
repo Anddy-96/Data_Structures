@@ -5,59 +5,92 @@
   int x;
   struct node *y;
  };
- void printList(struct node *n)
+ struct node *n = NULL;
+ struct node *l = NULL;
+ struct node *h = NULL;
+
+ void printList(struct node *a)
  {
+   struct node *n = a;
    while(n != NULL)
    {
      printf("%d\n",n->x);
      n = n->y;
    }
  }
-  void Choose(struct node *n)
+  void Addatfirst(int x, struct node **h)
  {
-   printf("Select the operations:\n");
+   struct node *nn = (struct node*)malloc(sizeof(struct node));
+  nn->x = x;
+  nn->y = *h;
+  *h = nn;
+ }
+ void Addatlast(int x, struct node **l)
+ {
+   struct node *nn = (struct node*)malloc(sizeof(struct node));
+   nn->x = x;
+   nn->y = NULL;
+   (*l)->y = nn;
+   *l = nn;
+
+
+ }
+  void Choose(struct node *h)
+ {
+   printf("\nSelect the operations:\n");
    printf("\t1.Add Elemet.\n\t2.Add at Beginning.\n\t3.Remove first.\n\t5.Remove last.\n\t6.Remove at particular index\n\t7.Remove value.\n\t8.Get Index of particular value\n");
-   printList(n);
+   
  }
 int main(void) {
   int r;
+  
+  l = (struct node*)malloc(sizeof(struct node));
+  h = (struct node*)malloc(sizeof(struct node));
   printf("Select:\n\t1.Use Default Link List\n\t2.Make your own Link List\n");
   scanf("%d",&r);
   if(r == 1)
   {
-    
+    h->x = 9;
+    l->x = 10;
+    h->y = l;
+    l->y = NULL;
+    Addatfirst(5,&h);
+    Addatlast(11,&l);
+    Addatfirst(7,&h);
+    Addatlast(2,&l);
+    printf("this is the default link List:\n");
+    printList(h);
   }
   else
   {
     printf("Enter the number of nodes you want in linklist:\n");
-  int i,b;
-  scanf("%d",&b);
-  struct node *n, *t, *h;
-  int z;
-  n = (struct node *)malloc(b * sizeof(struct node));
-  h = (struct node*)malloc(sizeof(struct node));
-  for(i=0;i<b;i++)
-  {
-    printf("Enter node %d value:\n",i+1);
-    scanf(" %d", &z);
-    (n+i)->x = z;
-    if(i>0)
+    int i,b;
+    scanf("%d",&b);
+    n = (struct node *)malloc(b * sizeof(struct node));
+    int z;
+    for(i=0;i<b;i++)
     {
-      (n+i-1)->y = (n+i); 
+      printf("Enter node %d value:\n",i+1);
+      scanf(" %d", &z);
+      (n+i)->x = z;
+      if(i>0)
+      {
+        (n+i-1)->y = (n+i); 
+      }
     }
-  }
-  (n+b-1)->y = NULL;
-  h->x = n->x;
-  if(b == 1)
-  {
-    h->y = NULL;
-  }
-  else
-  {
-    h->y = n+1;
-  }
-  printf("Displying all node values:\n");
-  Choose(h);
+    (n+b-1)->y = NULL;
+    h->x = n->x;
+    if(b == 1)
+    {
+      h->y = NULL;
+    }
+    else
+    {
+      h->y = n+1;
+    }
+    printf("\nDisplying your link list:\n");
+    printList(h);
+    Choose(h);
   }
 
   
