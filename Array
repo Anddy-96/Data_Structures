@@ -12,18 +12,17 @@
 
  void printList(struct node *a)
  {
-   struct node *n = a;
-   while(n != NULL)
+   while(a != NULL)
    {
-     printf("%d\n",n->x);
-     n = n->y;
+     printf("%d\n",a->x);
+     a = a->y;
    }
    char b;
    printf("you want to continue y/n :\n");
    scanf("%s",&b);
    if (b == 'y')
    {
-      Choose(n);
+      Choose(h);
    }
    else
    {
@@ -66,13 +65,11 @@
       break;
     case 4:
       break;
-
    }
    
  }
 int main(void) {
   int r;
-  
   l = (struct node*)malloc(sizeof(struct node));
   h = (struct node*)malloc(sizeof(struct node));
   printf("Select:\n\t1.Use Default Link List\n\t2.Make your own Link List\n");
@@ -85,11 +82,8 @@ int main(void) {
     l->y = NULL;
     Addatfirst(5,&h);
     Addatlast(11,&l);
-    Addatfirst(7,&h);
-    Addatlast(2,&l);
     printf("This is your default link List:\n");
     printList(h);
-    Choose(h);
   }
   else
   {
@@ -109,6 +103,7 @@ int main(void) {
       }
     }
     (n+b-1)->y = NULL;
+    l = (n+b-1);
     h->x = n->x;
     if(b == 1)
     {
@@ -120,9 +115,6 @@ int main(void) {
     }
     printf("\nDisplying your link list:\n");
     printList(h);
-    Choose(h);
   }
-
-  
   return 0;
 }
