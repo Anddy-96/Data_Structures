@@ -38,7 +38,7 @@
   void Choose(struct node *h)
  {
    printf("\nSelect the operations:\n");
-   printf("\t1.Add Elemet.\n\t2.Add at Beginning.\n\t3.Remove first.\n\t5.Remove last.\n\t6.Remove at particular index\n\t7.Remove value.\n\t8.Get Index of particular value\n");
+   printf("\t1.Add at Last.\n\t2.Add at Beginning.\n\t3.Add at particular index first.\n\t5.Remove last.\n\t6.Remove First.\n\t7.Remove at particular index\n\t8.Remove value.\n\t9.Get Index of particular value\n");
    
  }
 int main(void) {
@@ -58,8 +58,9 @@ int main(void) {
     Addatlast(11,&l);
     Addatfirst(7,&h);
     Addatlast(2,&l);
-    printf("this is the default link List:\n");
+    printf("This is your default link List:\n");
     printList(h);
+    Choose(h);
   }
   else
   {
