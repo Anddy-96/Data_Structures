@@ -6,30 +6,15 @@
   struct node *y;
  };
  void Choose(struct node *h);
+ void Addatfirst(int x, struct node **h);
+ void printList(struct node *a);
+ void Addatlast(int x, struct node **l);
+ struct node *a = NULL;
  struct node *n = NULL;
  struct node *l = NULL;
  struct node *h = NULL;
 
- void printList(struct node *a)
- {
-   printf("Your list:\n");
-   while(a != NULL)
-   {
-     printf("%d\n",a->x);
-     a = a->y;
-   }
-   char b;
-   printf("you want to continue y/n :\n");
-   scanf("%s",&b);
-   if (b == 'y')
-   {
-      Choose(h);
-   }
-   else
-   {
-      printf("Thank you!\n");
-   }
- }
+
   void Addatfirst(int x, struct node **h)
  {
    struct node *nn = (struct node*)malloc(sizeof(struct node));
@@ -45,10 +30,35 @@
    (*l)->y = nn;
    *l = nn;
  }
+  void printList(struct node *a)
+ {
+   h=a;
+   printf("%d:check sec\n",h->x);
+   printf("Your list:\n");
+   while(a != NULL)
+   {
+     
+     printf("%d\n",a->x);
+     a = a->y;
+   }
+   
+   char b;
+   printf("you want to continue y/n :\n");
+   scanf("%s",&b);
+   if (b == 'y')
+   {
+     //printf("%d:check second\n",h->x);
+      Choose(h);
+   }
+   else
+   {
+      printf("Thank you!\n");
+   }
+ }
   void Choose(struct node *h)
  {
    printf("\nSelect the operations:\n");
-   printf("\t1.Add at Last.\n\t2.Add at Beginning.\n\t3.Add at particular index first.\n\t5.Remove last.\n\t6.Remove First.\n\t7.Remove at particular index\n\t8.Remove value.\n\t9.Get Index of particular value\n");
+   printf("\t1.Add at Last.\n\t2.Add at Beginning.\n\t3.Add at particular index first.\n\t5.Remove last.\n\t6.Remove First.\n\t7.Remove at particular index\n\t8.Remove value.\n\t9.Get Index of particular value\n\t10.Display\n");
    int a;
    int b;
    scanf("%d",&a);
@@ -64,11 +74,15 @@
       printf("Enter the element you want to add:\n");
       scanf("%d",&b);
       Addatfirst(b,&h);
+      printf("%d:check first\n",h->x);
       printList(h);
       break;
     case 3:
       break;
     case 4:
+      break;
+    case 10:
+      printList(h);
       break;
    }
    
@@ -77,6 +91,7 @@ int main(void) {
   int r;
   l = (struct node*)malloc(sizeof(struct node));
   h = (struct node*)malloc(sizeof(struct node));
+  a = (struct node*)malloc(sizeof(struct node));
   printf("Select:\n\t1.Use Default Link List\n\t2.Make your own Link List\n");
   scanf("%d",&r);
   if(r == 1)
@@ -85,8 +100,8 @@ int main(void) {
     l->x = 10;
     h->y = l;
     l->y = NULL;
-    Addatfirst(5,&h);
-    Addatlast(11,&l);
+    //Addatfirst(5,&h);
+    //Addatlast(11,&l);
     printf("This is your default link List:\n");
     printList(h);
   }
