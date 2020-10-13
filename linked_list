@@ -56,19 +56,76 @@
  }
  void removeatfirst(struct node **a)
  {
+    *a=(*a)->y;
+    h=*a;
+ }
+ void removeatindex(int q, struct node **a)
+ {
+   t =*a;
+   struct node *prev = NULL;
+   prev = *a;
+
+   int i;
+
+    for(i=1;i<=q-1;i++)
+     {
+        t = t->y;
+     }
+     for(i=1;i<q-1;i++)
+     {
+        prev = prev->y;
+     }
+    prev->y = t->y;
+
 
  }
- void removeatindex(struct node **a)
+ void removevalue(int q, struct node *a)
  {
+     h = a;
+     t = a;
+
+     struct node *prev = NULL;
+    prev = a;
+
+     int i=1;
+     int n;
+    while(a != NULL)
+   {
+     if(a->x == q)
+     {
+         //printf("Index of your value is: %d\n",i);
+         n=i;
+     }
+     i=i+1;
+     a = a->y;
+   }
+
+   printf("n:%d",n);
+
+    for(i=1;i<=n-1;i++)
+     {
+        t = t->y;
+     }
+     for(i=1;i<n-1;i++)
+     {
+        prev = prev->y;
+     }
+    prev->y = t->y;
+
 
  }
- void removevalue(struct node **a)
+ void Getindex(int q, struct node *a)
  {
-
- }
- void Getindex(struct node **a)
- {
-
+     int i=1;
+    while(a != NULL)
+   {
+     if(a->x == q)
+     {
+         printf("Index of your value is: %d\n",i);
+     }
+     i=i+1;
+     a = a->y;
+   }
  }
  void Addatindex(int q, int w, struct node **a)
  {
@@ -146,15 +203,25 @@
       break;
     case 5:
       removeatfirst(&h);
+      printList(h);
       break;
     case 6:
-      removeatindex(&h);
+      printf("Enter the index which you want to remove\n");
+      scanf("%d",&c);
+      removeatindex(c,&h);
+      printList(h);
       break;
     case 7:
-      removevalue(&h);
+      printf("Enter the value which you want to remove\n");
+      scanf("%d",&c);
+      removevalue(c,h);
+      printList(h);
       break;
     case 8:
-      Getindex(&h);
+      printf("Enter the value:\n");
+      scanf("%d",&c);
+      Getindex(c,h);
+      printList(h);
       break;
     case 9:
       printList(h);
