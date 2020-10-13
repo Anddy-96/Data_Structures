@@ -5,47 +5,169 @@
   int x;
   struct node *y;
  };
+ void Choose(struct node *h);
+ void Addatfirst(int x, struct node **h);
+ void printList(struct node *a);
+ void Addatlast(int x, struct node **l);
+ void Addatindex(int x, int z, struct node **a);
+ void removeatlast(struct node *a);
+ struct node *a = NULL;
  struct node *n = NULL;
  struct node *l = NULL;
  struct node *h = NULL;
+ struct node *t = NULL;
 
- void printList(struct node *a)
+
+ void Addatfirst(int x, struct node **h)
  {
-   struct node *n = a;
-   while(n != NULL)
-   {
-     printf("%d\n",n->x);
-     n = n->y;
-   }
- }
-  void Addatfirst(int x, struct node **h)
- {
-   struct node *nn = (struct node*)malloc(sizeof(struct node));
+   //printf("2stcheck value: %d\n",(*h)->x);
+  struct node *nn = (struct node*)malloc(sizeof(struct node));
   nn->x = x;
   nn->y = *h;
   *h = nn;
+  //printf("3stcheck value: %d\n",(*h)->x);
  }
  void Addatlast(int x, struct node **l)
  {
+
    struct node *nn = (struct node*)malloc(sizeof(struct node));
    nn->x = x;
    nn->y = NULL;
    (*l)->y = nn;
    *l = nn;
-
+ }
+ void removeatlast(struct node *a)
+ {
+   int n=0;
+   int i;
+   t = a;
+   //h = a;
+   while(a!=NULL)
+   {
+        n=n+1;
+        a = a->y;
+   }
+   //printf("1 i:%d\n",i);
+   for(i=1;i<n-1;i++)
+   {
+       t=t->y;
+   }
+   t->y = NULL;
+ }
+ void removeatfirst(struct node **a)
+ {
 
  }
-  void Choose(struct node *h)
+ void removeatindex(struct node **a)
+ {
+
+ }
+ void removevalue(struct node **a)
+ {
+
+ }
+ void Getindex(struct node **a)
+ {
+
+ }
+ void Addatindex(int q, int w, struct node **a)
+ {
+   t =*a;
+   struct node *nn = (struct node*)malloc(sizeof(struct node));
+   int i;
+
+    for(i=1;i<q-1;i++)
+     {
+        t = t->y;
+     }
+     nn->x = w;
+     nn->y = t->y;
+     t->y =nn;
+
+ }
+ void printList(struct node *a)
+ {
+   //
+   t=a;
+   printf("Your list:\n");
+   while(a != NULL)
+   {
+     printf("%d\n",a->x);
+     a = a->y;
+   }
+
+   char b;
+   h=t;
+   printf("you want to continue y/n :\n");
+   scanf("%s",&b);
+   if (b == 'y')
+   {
+      Choose(h);
+   }
+   else
+   {
+      printf("Thank you!\n");
+   }
+ }
+ void Choose(struct node *h)
  {
    printf("\nSelect the operations:\n");
-   printf("\t1.Add at Last.\n\t2.Add at Beginning.\n\t3.Add at particular index first.\n\t5.Remove last.\n\t6.Remove First.\n\t7.Remove at particular index\n\t8.Remove value.\n\t9.Get Index of particular value\n");
-   
+   printf("\t1.Add at Last.\n\t2.Add at Beginning.\n\t3.Add at particular index.\n\t4.Remove last.\n\t5.Remove First.\n\t6.Remove at particular index\n\t7.Remove value.\n\t8.Get Index of particular value\n\t9.Display\n");
+   int a;
+   int b;
+   int c,d;
+   scanf("%d",&a);
+   switch(a)
+   {
+     case 1:
+      printf("Enter the element you want to add:\n");
+      scanf("%d",&b);
+      Addatlast(b,&l);
+      printList(h);
+      break;
+    case 2:
+      printf("Enter the element you want to add:\n");
+      scanf("%d",&b);
+      Addatfirst(b,&h);
+      printList(h);
+      break;
+    case 3:
+      printf("Enter the index where you want to add:\n");
+      scanf("%d",&c);
+      printf("Enter the element:\n");
+      scanf("%d",&b);
+      Addatindex(c,b,&h);
+      printf("it's been added, select Display option and check\n");
+      printList(h);
+      break;
+    case 4:
+      removeatlast(h);
+      printList(h);
+      break;
+    case 5:
+      removeatfirst(&h);
+      break;
+    case 6:
+      removeatindex(&h);
+      break;
+    case 7:
+      removevalue(&h);
+      break;
+    case 8:
+      Getindex(&h);
+      break;
+    case 9:
+      printList(h);
+      break;
+   }
+
  }
 int main(void) {
   int r;
-  
   l = (struct node*)malloc(sizeof(struct node));
   h = (struct node*)malloc(sizeof(struct node));
+  a = (struct node*)malloc(sizeof(struct node));
+  t = (struct node*)malloc(sizeof(struct node));
   printf("Select:\n\t1.Use Default Link List\n\t2.Make your own Link List\n");
   scanf("%d",&r);
   if(r == 1)
@@ -54,13 +176,10 @@ int main(void) {
     l->x = 10;
     h->y = l;
     l->y = NULL;
-    Addatfirst(5,&h);
-    Addatlast(11,&l);
-    Addatfirst(7,&h);
-    Addatlast(2,&l);
+    //Addatfirst(5,&h);
+    //Addatlast(11,&l);
     printf("This is your default link List:\n");
     printList(h);
-    Choose(h);
   }
   else
   {
@@ -76,10 +195,11 @@ int main(void) {
       (n+i)->x = z;
       if(i>0)
       {
-        (n+i-1)->y = (n+i); 
+        (n+i-1)->y = (n+i);
       }
     }
     (n+b-1)->y = NULL;
+    l = (n+b-1);
     h->x = n->x;
     if(b == 1)
     {
@@ -91,9 +211,6 @@ int main(void) {
     }
     printf("\nDisplying your link list:\n");
     printList(h);
-    Choose(h);
   }
-
-  
   return 0;
 }
