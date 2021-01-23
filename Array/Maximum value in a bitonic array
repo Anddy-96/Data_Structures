@@ -1,0 +1,58 @@
+import java.io.*;
+import java.util.*;
+class Main
+{
+	public static void main(String args[]) throws IOException 
+	{
+	    
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		int t = Integer.parseInt(br.readLine().trim());
+		int arr[] = new int[t];
+		String input[] = br.readLine().trim().split(" ");
+		for(int i = 0; i<t; i++)
+		{
+			arr[i] = Integer.parseInt(input[i]);
+		}
+		int ans = new Frequency().frequencycount(arr,t);
+		System.out.println(ans);
+	}
+}
+class Frequency
+{
+	public static int frequencycount(int arr[], int n)
+	{
+	    int ans = 0;
+	    int hf;
+		hf = n/2;
+		
+		if((arr[hf] < arr[hf+1]) && (arr[hf] > arr[hf-1]))
+		{
+		    System.out.println(hf);
+		    for(int i=hf; i<n-1; i++)
+		    {
+		        if(arr[i] > arr[i+1])
+		        {
+		            ans = arr[i];
+		        }
+		            
+		    }
+		    if(ans ==0)
+		        ans = arr[n-1];
+		}
+		else
+		{
+		    System.out.println(hf);
+		    for(int i =0; i<= hf; i++)
+		    {
+		        if(arr[i] > arr[i+1])
+		        {
+		            ans = arr[i];
+		            break;
+		        }
+		    }
+		    
+		}
+		
+		return ans;
+	}
+}
